@@ -1,30 +1,47 @@
 #!/usr/bin/env python3
 
-### TEST
-
 from deep_translator import GoogleTranslator
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
-### Pulls down language list from Google
-language_list = GoogleTranslator().get_supported_languages() 
+def startup_menu():
+    print("")
+    print("======================================")
+    print("    The Josh and Carter Translator    ")
+    print("======================================")
+    print("")
 
-### Creates word completer menu
-def menu():
+def get_supported_languages():
+    return GoogleTranslator().get_supported_languages()
+
+def select_language(language_list):
     completer = WordCompleter(language_list, ignore_case=True)
-    global language
     language = prompt("Choose the language you want to translate to: ", completer=completer)
     if language:
         print(f"You selected: {language}")
+        return language
     else:
-        menu()
-menu()
+        return select_language(language_list)
 
-def english_to_spanish(text):
-    translator = GoogleTranslator(source='auto', target=language)
+def translate_it(text, target_language):
+    translator = GoogleTranslator(source='auto', target=target_language)
     return translator.translate(text)
 
-text_to_translate = input("What is the English word you would like to translate?:  ")
-translated_text = english_to_spanish(text_to_translate)
+def main():
+    startup_menu()
+    language_list = get_supported_languages()
+    language = select_language(language_list)
+    text_to_translate = input("What would you like to translate?:  ")
+    translated_text = translate_it(text_to_translate, language)
+    print("")
+    rerun()
 
-print("Translated Word: " + '\033[1m' + translated_text)
+def rerun():
+    rerun_choice = input("Would you like to translate more? (Y/N):  ").lower()
+    if rerun_choice in ["y", "yes"]:
+        main()
+    else:
+        pass
+
+if __name__ == "__main__":
+    main()
