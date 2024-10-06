@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+### TEST
+
 from deep_translator import GoogleTranslator
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
