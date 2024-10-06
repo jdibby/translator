@@ -5,7 +5,6 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
 def get_supported_languages():
-    """ Grab the list of supported languages from Google """
     return GoogleTranslator().get_supported_languages()
 
 def startup_menu():
