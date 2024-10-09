@@ -12,7 +12,7 @@ def startup_menu():
     """ Display a startup menu """
     print("")
     print("======================================")
-    print("    The Josh and Carter Translator    ")
+    print("         The Translator    ")
     print("======================================")
     print("")
 
