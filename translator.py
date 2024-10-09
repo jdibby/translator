@@ -50,7 +50,7 @@ def main():
     selected_language = select_language(language_list)
     text_to_translate = get_text_to_translate()
     translated_text = translate_it(text_to_translate, selected_language)
-    print("Translated Text: " + '\033[1m' + translated_text)
+    print("Translated Text: " + translated_text) 
     print("")
     rerun()
 
